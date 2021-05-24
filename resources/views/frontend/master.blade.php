@@ -115,7 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="copy-section">
     <div class="container">
         <div class="copy-left">
-            <p>&copy; 2016 New Shop . All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+            <p>&copy; 2021 New Shop . All rights reserved | Design by <span style="color:green; font-size: 20px;">Rezaul Karim.</span></p>
         </div>
         <div class="copy-right">
             <img src="{{asset('/')}}/frontend/images/card.png" alt=""/>

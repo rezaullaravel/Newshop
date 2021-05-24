@@ -46,6 +46,11 @@ Route::post('/customer/registration',[
     'as'=>'customer-sign-up'
 ]);
 
+Route::post('/customer/login',[
+    'uses'=>'CheckoutController@customerLoginCheck',
+    'as'=>'customer-login'
+]);
+
 Route::get('/checkout/shipping',[
     'uses'=>'CheckoutController@shippingForm',
     'as'=>'checkout-shipping'
@@ -158,6 +163,32 @@ Route::post('/product/update',[
 Route::get('/product/delete/{id}',[
     'uses'=>'ProductController@deleteProductInfo',
     'as'=>'delete-product'
+]);
+
+Route::get('/manage/order',[
+    'uses'=>'orderController@manageOrderInfo',
+    'as'=>'manage-order'
+]);
+
+Route::get('/edit/order/{id}',[
+    'uses'=>'orderController@editOrder',
+    'as'=>'edit-order'
+]);
+
+Route::post('/update/order/',[
+    'uses'=>'orderController@updateOrderInfo',
+    'as'=>'update-order'
+]);
+
+Route::get('/delete/order/{id}',[
+    'uses'=>'orderController@deleteOrderInfo',
+    'as'=>'delete-order'
+]);
+
+
+Route::get('/order/details/{id}',[
+    'uses'=>'orderController@viewOrderDetail',
+    'as'=>'view-order-detail'
 ]);
 
 

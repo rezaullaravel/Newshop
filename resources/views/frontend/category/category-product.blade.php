@@ -241,7 +241,23 @@
                                                     <h6><a href="single.html">{{$categoryProduct->product_name}}</a></h6>
                                                     <span class="size">XL / XXL / S </span>
                                                     <p ><em class="item_price">TK.{{$categoryProduct->product_price}}</em></p>
-                                                    <a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+                                                    <!--<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>-->
+                                                    <form action="{{route('add-to-cart')}}" method="POST">
+                                                        {{csrf_field()}}
+                                                        <div class="color-quality">
+                                                            <h6>Quality :</h6>
+                                                            <div class="quantity">
+                                                                <input type="number" name="qty" value="1" min="1">
+                                                                <input type="hidden" name="id" value="{{$categoryProduct->id}}">
+                                                            </div>
+                                                            <!--quantity-->
+
+                                                            <!--quantity-->
+                                                        </div>
+                                                        <div class="women">
+                                                            <input type="submit" name="btn" value="Add To shopping Cart" class="my-cart-b item_add">
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

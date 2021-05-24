@@ -24,6 +24,9 @@ class CheckoutController extends Controller
     }
 
     public function customerSignup(Request $request){
+        $this->validate($request,[
+            'email_address'=>'email|unique:customers,email_address'
+        ]);
         $customer=new Customer();
         $customer->first_name=$request->first_name;
         $customer->last_name=$request->last_name;
@@ -46,6 +49,33 @@ class CheckoutController extends Controller
         return redirect('/checkout/shipping');
 
 
+    }
+
+
+    public function customerLoginCheck(Request $request){
+        //return $request->all();
+          $customer=Customer::where('email_address',$request->email_address)->first();
+          //return $customer;
+        if($customer){
+            if (password_verify($request->password,$customer->password)) {
+                Session::put('customerId', $customer->id);
+                Session::put('customerName', $customer->first_name . ' ' . $customer->last_name);
+                return redirect('/checkout/shipping');
+            } else{
+                return redirect('/checkout')->with('message','Invalid email address or password.please give correct email and password.');
+            }
+
+        }else{
+            return redirect('/checkout')->with('message','Invalid email address or password.please give correct email and password.');
+
+        }
+        /*if (password_verify($request->password,$customer->password)) {
+            Session::put('customerId',$customer->id);
+            Session::put('customerName',$customer->first_name.' '.$customer->last_name);
+            return redirect('/checkout/shipping');
+        } else {
+            return redirect('/checkout')->with('message','Invalid  password.please give correct  password.');
+        }*/
     }
 
 

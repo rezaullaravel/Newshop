@@ -72,9 +72,11 @@
             <div class="col-md-5">
                 <hr>
                 <h1 class="text-center">Login here.</h1>
+                <br>
+                <h3 class="text-center text-danger">{{Session::get('message')}}</h3>
                 <hr>
 
-                <form class="form-horizontal" action="" method="post">
+                <form class="form-horizontal" action="{{route('customer-login')}}" method="post">
                     {{csrf_field()}}
 
 
